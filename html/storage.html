@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Storage的特点：
+    存储量限制（5m）
+    客户端完成，不会请求服务器处理
+    sessionStorage数据是不共享，localStorage共享 -->
+    <button>保存</button>
+    <button>获取</button>
+    <button>删除</button>
+    <button>清除所有</button>
+    <input type="text" placeholder="请输入将要缓存的内容">
+    <div id="box"></div>
+</body>
+<script>
+    onload = function(){
+        let bUtton = document.getElementsByTagName('button');
+        let input  = document.getElementsByTagName('input')[0];
+        let box = document.getElementById('box');
+        
+        //保存
+        bUtton[0].onclick = function(){
+            window.sessionStorage.setItem('res',bUtton[3].value);
+            window.sessionStorage.setItem('hello','huanying');
+            // console.log();
+        }
+
+        //获取
+        bUtton[1].onclick = function(){
+            let text = window.sessionStorage.getItem('text');
+            box.innerHTML = text;
+        }
+
+        //删除
+        bUtton[2].onclick = function(){
+            window.sessionStorage.removeItem('text');
+        }
+
+        //清除所有
+        bUtton[3].onclick = function(){
+            window.sessionStorage.clear();
+        }
+
+
+    }
+</script>
+</html>

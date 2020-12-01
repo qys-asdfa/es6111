@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- Storage的特点
+        // 		存储量限制 ( 5M )
+        // 		客户端完成，不会请求服务器处理
+        // 		sessionStorage数据是不共享、 localStorage共享 -->
+
+        <button>保存</button>
+        <button>获取</button>
+        <button>删除</button>
+        <button>清除所有</button>
+        <input type="text" placeholder="请输入将要缓存的内容">
+        <div id="can"></div>
+</body>
+<script>
+    // ！注意：localStorage数据共享，能跨页传参，可以跨浏览器
+    onload = function(){
+      let button = document.getElementsByTagName('button');
+      let input = document.getElementsByTagName('input')[0];
+      let can = document.getElementById('can');
+      console.log(input);
+      
+      //保存
+      button[0].onclick = function(){
+         window.localStorage.setItem('text',input.value);
+         window.localStorage.setItem('hello','huangying');
+      }
+
+      //获取
+      button[1].onclick =function(){
+          let text = window.localStorage.getItem('text');
+          can.innerHTML = text;
+
+      }
+
+      //删除
+      button[2].onclick = function(){
+          window.localStorage.removeItem('text');
+
+      }
+
+      //清除所有
+      button[3].onclick = function(){
+           window.localStorage.clear();
+      }
+    }
+</script>
+</html>
